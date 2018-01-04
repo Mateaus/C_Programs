@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <string.h>
+
+void evolutionchamber(char type[3]);
+void stats(int H,int A,int L);
+
+
+
+int main()
+{
+  int x,Head,Arm,Leg,exitB;
+  char option[3],a;
+  Head = 0;
+  Arm = 0;
+  Leg = 0;
+  exitB = 0;
+while(1)
+  {
+    printf("What do you wish to evolve? \n");
+    printf("1)Head \n");
+    printf("2)Arms \n");
+    printf("3)Legs \n");
+    printf("4)Stats \n");
+    scanf("%d",&x);
+
+    if (x == 1)
+      {
+        printf("Would you like to evolve your Head? ");
+        scanf("%s",&option);
+        evolutionchamber(option);
+          if (strcmp(option, "Yes") == 0 || strcmp(option, "yes") == 0)
+            {
+              Head++;
+              printf("%d time(s). \n\n",Head);
+            }
+      }
+
+    if (x == 2)
+      {
+        printf("Would you like to evolve your Arms? ");
+        scanf("%s",&option);
+        evolutionchamber(option);
+          if (strcmp(option, "Yes") == 0 || strcmp(option, "yes") == 0)
+            {
+              Arm++;
+              printf("%d time(s). \n\n",Arm);
+            }
+      }
+
+    if (x == 3)
+      {
+        printf("Would you like to evolve your Legs? ");
+        scanf("%s",&option);
+        evolutionchamber(option);
+          if (strcmp(option, "Yes") == 0 || strcmp(option, "yes") == 0)
+            {
+              Leg++;
+              printf("%d time(s). \n\n",Leg);
+            }
+      }
+    if (x == 4)
+      {
+        stats(Head,Arm,Leg);
+      }
+
+    while(1)
+      {
+        printf("Would you like to continue evolving?(Y/N) ");
+        scanf("%c",&a);
+        if(a == '\n')
+          {
+            scanf("%c",&a);
+          }
+        if (a == 'Y' || a == 'y')
+          {
+            break;
+          }
+        if (a == 'N' || a == 'n')
+          {
+            exitB = 1;
+            break;
+          }
+        else
+          {
+            printf("Invalid input, please try again \n");
+          }
+      }
+    if (exitB == 1)
+      {
+        break;
+      }
+    }
+
+  return(0);
+}
+
+void evolutionchamber(char type[3])
+{
+
+  if(strcmp(type, "Yes") == 0 || strcmp(type, "yes") == 0)
+    {
+      printf("You have evolved ");
+    }
+  else if(strcmp(type, "No") == 0 || strcmp(type, "yes") == 0)
+    {
+      printf("You didn't evolve. \n");
+    }
+  else
+    {
+      printf("Invalid input. \n");
+    }
+}
+
+void stats(int H,int A,int L)
+  {
+    printf("Head = %d\n",H);
+    printf("Arm = %d\n",A);
+    printf("Leg = %d\n",L);
+  }
