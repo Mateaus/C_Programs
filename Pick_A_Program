@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <time.h>
+
+void test();//doesn't has to return anything.
+void swtch(char p);//has to return character.
+int max(int x, int y);
+int min(int x, int y);
+int array(int x);
+
+int main()
+{
+  char a;
+  int x,t,y,larger,smallest, temp;
+
+  printf("1)Switch Program. \n");
+  printf("2)Argument Program. \n");
+  printf("3)Array Program. \n");
+
+  scanf("%d",&x);
+  if(x == 1)
+    {
+      test();
+      scanf("%c",&a);  //this is used to avoid a problem of extra line from scanf as being detected as an input.
+      if (a == '\n')
+        {
+          scanf("%c",&a);
+        }
+      swtch(a);
+    }
+
+  if(x == 2)
+    {
+      printf("Type two integers separated by a space: ");
+      scanf("%d %d",&t,&y);
+      if (y == '\n')
+        {
+          scanf("%d %d",&t,&y);
+        }
+      larger = max(t,y);
+      smallest = min(t,y);
+      printf("The largest number is %d.\n",larger);
+      printf("The lowest number is %d.\n",smallest);
+    }
+
+    if(x == 3)
+      {
+        printf("Outside the function, the difference of the highest temperature with the lowest temperature is:%d \n",array(temp));
+      }
+  return(0);
+}
+
+void test()
+{
+  puts("Vacation options:");
+  puts("A - Airfare");
+  puts("B - Hotel");
+  puts("C - Rental Car");
+}
+
+void swtch(char p)
+{
+
+  switch(p)
+    {
+      case 'A':
+      case 'a':
+          puts("You have selected the Airfare");
+          break;
+      case 'B':
+      case 'b':
+          puts("You have selected the Hotel");
+          break;
+      case 'C':
+      case 'c':
+          puts("You have selected the Rental Car");
+          break;
+      default:
+          puts("Invalid option.");
+    }
+
+}
+
+int max(int x, int y)
+{
+  if (x > y)
+    return(x);
+  return(y); //<-- else
+}
+
+int min(int x, int y)
+{
+  if (x < y)
+    return(x);
+  return(y);
+}
+
+int array(int x)
+{
+  double dTempM[9] = {73.5, 79.9, 84.5, 91.4, 95.7, 92.2, 89.9, 84.2, 82.8};
+  double minTemp, maxTemp, iTempCnt;
+  int i;
+
+  minTemp = dTempM[0];
+  maxTemp = dTempM[0];
+  for(i=1;i<9;i++)
+    {
+      if(dTempM[i] < minTemp)
+        {
+          minTemp = dTempM[i];
+        }
+      if(dTempM[i] > maxTemp)
+        {
+          maxTemp = dTempM[i];
+        }
+    }
+
+    iTempCnt = maxTemp - minTemp;
+
+    printf("Inside the function, the difference of the highest temperature with the lowest temperature is:%f \n",iTempCnt);
+    return(iTempCnt);
+}
